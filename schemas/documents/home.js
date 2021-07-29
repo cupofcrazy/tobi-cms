@@ -24,6 +24,12 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
+      name: 'color',
+      type: 'color',
+      description: 'The color / theme of the project (preferably light vibrant for suitable contrast)',
+      validation: Rule => Rule.required(),
+    },
+    {
       name: 'selected_project',
       description: 'The project that is currently selected for the homepage',
       type: 'reference',

@@ -1,6 +1,7 @@
 import S from '@sanity/desk-tool/structure-builder'
 import { FcHome } from "react-icons/fc";
 import { FcInfo } from "react-icons/fc";
+import { FcSettings } from "react-icons/fc";
 
 
 export default () =>
@@ -20,11 +21,11 @@ export default () =>
       ),
 
       // Other Docs
-      ...S.documentTypeListItems().filter(listItem => !['home', 'info'].includes(listItem.getId())),
+      ...S.documentTypeListItems().filter(listItem => !['home', 'info', 'settings'].includes(listItem.getId())),
 
       // Divider
       S.divider(),
-
+      
       // Info Doc
       S.listItem()
       .title('Information')
@@ -32,7 +33,17 @@ export default () =>
       .child(
         S.document()
         .schemaType('info')
-      ),
+        ),
+        S.divider(),
+        
+        // Settings Doc
+        S.listItem()
+        .title('Settings')
+        .icon(FcInfo)
+        .child(
+          S.document()
+          .schemaType('settings')
+          ),
     ],
       
   )

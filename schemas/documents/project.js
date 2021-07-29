@@ -12,6 +12,12 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
+      name: 'subtitle',
+      type: 'text',
+      description: 'The subtitle of the project',
+      validation: Rule => Rule.required(),
+    },
+    {
       name: 'slug',
       type: 'slug',
       description: 'The slug / unique id of the project (from project title)',
@@ -39,8 +45,20 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
+      name: 'url',
+      type: 'url',
+      description: 'The url of the project (also for SE0)',
+      validation: Rule => Rule.required(),
+    },
+    {
       name: 'cover',
       type: 'a11yImage',
+    },
+    {
+      name: 'details',
+      type: 'array',
+      description: 'The details of the project',
+      of: [{type: 'text'}],
     },
     {
       name: 'images',
@@ -48,7 +66,12 @@ export default {
       description: 'Images for the project',
       of: [
         { 
-          type: 'a11yImage'
+          name: 'singleShot',
+          type: 'imageWithCaption',
+        },
+        {
+          name: 'doubleShot',
+          type: 'doubleImage',
         },
       ],
       validation: Rule => Rule.required(),
@@ -60,9 +83,9 @@ export default {
       of: [{type: 'string'}],
       options: {
         list: [
-          {title: 'Front End Development', value: 'front-end'},
-          {title: 'UI Design', value: 'ui-design'},
-          {title: 'Graphic Design', value: 'graphic-design'},
+          {title: 'Front End Development', value: 'Front End Development'},
+          {title: 'UI Design', value: 'UI Design'},
+          {title: 'Graphic Design', value: 'Graphic Design'},
         ]
       }
     }

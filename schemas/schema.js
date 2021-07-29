@@ -8,9 +8,12 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import home from './documents/home'
 import info from './documents/info'
 import project from './documents/project'
+import settings from './documents/settings'
 
 // Objects Schema
 import a11yImage from './objects/image'
+import imageWithCaption from './objects/imageWithCaption'
+import doubleImage from './objects/doubleImage'
 import link from './objects/link'
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -24,8 +27,11 @@ export default createSchema({
     home,
     info,
     project,
+    settings,
+    
     link,
-
-    a11yImage
+    a11yImage,
+    imageWithCaption,
+    doubleImage
   ]),
 })
