@@ -2,6 +2,8 @@ import { FcBriefcase } from "react-icons/fc";
 
 export default {
   name: 'project',
+  title: 'Projects',
+  description: 'Create a new project',
   type: 'document',
   icon: FcBriefcase,
   fields: [

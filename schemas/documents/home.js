@@ -24,6 +24,12 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
+      name: 'cover',
+      description: 'Cover image',
+      type: 'image',
+      validation: Rule => Rule.required(),
+    },
+    {
       name: 'color',
       type: 'color',
       description: 'The color / theme of the project (preferably light vibrant for suitable contrast)',

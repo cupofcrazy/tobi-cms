@@ -21,10 +21,12 @@ export default () =>
       ),
 
       // Other Docs
-      ...S.documentTypeListItems().filter(listItem => !['home', 'info', 'settings'].includes(listItem.getId())),
+      ...S.documentTypeListItems()
+        .filter(listItem => !['home', 'info', 'settings']
+        .includes(listItem.getId())),
 
       // Divider
-      S.divider(),
+      // S.divider(),
       
       // Info Doc
       S.listItem()
@@ -39,7 +41,7 @@ export default () =>
         // Settings Doc
         S.listItem()
         .title('Settings')
-        .icon(FcInfo)
+        .icon(FcSettings)
         .child(
           S.document()
           .schemaType('settings')
