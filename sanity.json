@@ -15,7 +15,8 @@
     "@sanity/desk-tool",
     "@sanity/color-input",
     "asset-source-unsplash",
-    "asset-source-giphy"
+    "asset-source-giphy",
+    "tabs"
   ],
   "env": {
     "development": {

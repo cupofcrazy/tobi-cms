@@ -1,4 +1,5 @@
 import { FcBriefcase } from "react-icons/fc";
+import Tabs from 'sanity-plugin-tabs'
 
 export default {
   name: 'project',
@@ -8,95 +9,110 @@ export default {
   icon: FcBriefcase,
   fields: [
     {
-      name: 'title',
-      type: 'string',
-      description: 'The title of the project',
-      validation: Rule => Rule.required(),
-    },
-    {
-      name: 'subtitle',
-      type: 'text',
-      description: 'The subtitle of the project',
-      validation: Rule => Rule.required(),
-    },
-    {
-      name: 'slug',
-      type: 'slug',
-      description: 'The slug / unique id of the project (from project title)',
-      options: {
-        source: 'title'
-      },
-      validation: Rule => Rule.required(),
-    },
-    {
-      name: 'color',
-      type: 'color',
-      description: 'The color / theme of the project (preferably light vibrant for suitable contrast)',
-      validation: Rule => Rule.required(),
-    },
-    {
-      name: 'created_at',
-      type: 'datetime',
-      description: 'The date the project was created',
-      validation: Rule => Rule.required(),
-    },
-    {
-      name: 'description',
-      type: 'text',
-      description: 'A short description of the project (also for SE0)',
-      validation: Rule => Rule.required(),
-    },
-    {
-      name: 'url',
-      type: 'url',
-      description: 'The url of the project (also for SE0)',
-      validation: Rule => Rule.required(),
-    },
-    {
-      name: 'cover',
-      type: 'a11yImage',
-    },
-    {
-      name: 'details',
-      type: 'array',
-      description: 'The details of the project',
-      of: [{type: 'text'}],
-    },
-    {
-      name: 'images',
-      type: 'array',
-      description: 'Images for the project',
-      of: [
-        { 
-          name: 'singleShot',
-          type: 'imageWithCaption',
+      name: 'content',
+      type: 'object',
+      inputComponent: Tabs,
+      fieldsets: [
+        { name: 'main', title: 'Main', options: { sortOrder: 10 }},
+        { name: 'details', title: 'Details', options: { sortOrder: 20 }},
+        { name: 'other', title: 'Other', options: { sortOrder: 20 }}
+      ],
+      fields: [
+        {
+          name: 'title',
+          type: 'string',
+          description: 'The title of the project',
+          validation: Rule => Rule.required(),
+          fieldset: 'main'
         },
         {
-          name: 'doubleShot',
-          type: 'doubleImage',
+          name: 'subtitle',
+          type: 'text',
+          description: 'The subtitle of the project',
+          validation: Rule => Rule.required(),
+          fieldset: 'main'
         },
+        {
+          name: 'slug',
+          type: 'slug',
+          description: 'The slug / unique id of the project (from project title)',
+          options: {
+            source: 'content.title'
+          },
+          validation: Rule => Rule.required(),
+          fieldset: 'main'
+        },
+        {
+          name: 'color',
+          type: 'color',
+          description: 'The color / theme of the project (preferably light vibrant for suitable contrast)',
+          validation: Rule => Rule.required(),
+          fieldset: 'main'
+        },
+        {
+          name: 'created_at',
+          type: 'datetime',
+          description: 'The date the project was created',
+          validation: Rule => Rule.required(),
+          fieldset: 'main'
+        },
+        {
+          name: 'description',
+          type: 'text',
+          description: 'A short description of the project (also for SE0)',
+          validation: Rule => Rule.required(),
+          fieldset: 'main'
+        },
+        {
+          name: 'url',
+          type: 'url',
+          description: 'The url of the project (also for SE0)',
+          validation: Rule => Rule.required(),
+          fieldset: 'main'
+        },
+        {
+          name: 'cover',
+          type: 'a11yImage',
+          fieldset: 'main'
+        },
+        {
+          name: 'details',
+          type: 'array',
+          description: 'The details of the project',
+          of: [{type: 'text'}],
+          fieldset: 'details'
+        },
+        {
+          name: 'content',
+          type: 'array',
+          of: [
+            { type: 'object', fields: [{ name: 'text', type: 'text' }] },
+            { type: 'image' }
+          ],
+          fieldset: 'details'
+        },
+        {
+          title: 'Tags',
+          name: 'tags',
+          type: 'array',
+          of: [{type: 'string'}],
+          options: {
+            list: [
+              {title: 'Front End Development', value: 'Front End Development'},
+              {title: 'UI Design', value: 'UI Design'},
+              {title: 'Graphic Design', value: 'Graphic Design'},
+            ]
+          },
+          fieldset: 'details'
+        }
       ],
-      validation: Rule => Rule.required(),
-    },
-    {
-      title: 'Tags',
-      name: 'tags',
-      type: 'array',
-      of: [{type: 'string'}],
-      options: {
-        list: [
-          {title: 'Front End Development', value: 'Front End Development'},
-          {title: 'UI Design', value: 'UI Design'},
-          {title: 'Graphic Design', value: 'Graphic Design'},
-        ]
-      }
     }
   ],
   preview: {
     select: {
-      title: 'title',
-      subtitle: 'slug',
-      media: 'cover'
+      title: 'content.title',
+      subtitle: 'content.slug',
+      media: 'content.cover'
     },
     prepare(selection) {
       const { title, subtitle, media } = selection;

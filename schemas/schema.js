@@ -15,6 +15,7 @@ import a11yImage from './objects/image'
 import imageWithCaption from './objects/imageWithCaption'
 import doubleImage from './objects/doubleImage'
 import link from './objects/link'
+import seo from './objects/seo'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -32,6 +33,7 @@ export default createSchema({
     link,
     a11yImage,
     imageWithCaption,
-    doubleImage
+    doubleImage,
+    seo
   ]),
 })
