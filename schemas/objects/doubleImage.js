@@ -4,17 +4,24 @@ export default {
   description: 'A double image module',
   fields: [
     {
-      name: 'image1',
+      name: 'left',
       type: 'image',
     },
     {
-      name: 'image2',
+      name: 'right',
       type: 'image',
-    },
-    {
-      name: 'alt',
-      type: 'string',
-      description: 'The alt text for the images',
     },
   ],
+  preview: {
+    select: {
+      media: 'left',
+    },
+    prepare(selection) {
+      const { title, media } = selection
+      return {
+        title,
+        media,
+      }
+    }
+  }
 };

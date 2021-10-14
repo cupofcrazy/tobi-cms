@@ -1,4 +1,4 @@
-import { FcBriefcase } from "react-icons/fc";
+import { FcFile } from "react-icons/fc";
 import Tabs from 'sanity-plugin-tabs'
 
 export default {
@@ -6,7 +6,7 @@ export default {
   title: 'Projects',
   description: 'Create a new project',
   type: 'document',
-  icon: FcBriefcase,
+  icon: FcFile,
   fields: [
     {
       name: 'content',
@@ -83,11 +83,13 @@ export default {
           fieldset: 'details'
         },
         {
-          name: 'content',
+          name: 'modules',
           type: 'array',
           of: [
             { type: 'object', fields: [{ name: 'text', type: 'text' }] },
-            { type: 'image' }
+            { type: 'image' },
+            { type: 'doubleImage' },
+            { type: 'alignedImage' }
           ],
           fieldset: 'details'
         },
