@@ -18,6 +18,9 @@ import link from './objects/link'
 import seo from './objects/seo'
 import writing from './documents/writing'
 import alignedImage from './objects/alignedImage'
+import textModule from './objects/textModule'
+import textSectionModule from './objects/textSectionModule'
+
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -38,6 +41,8 @@ export default createSchema({
     imageWithCaption,
     doubleImage,
     alignedImage,
+    textModule,
+    textSectionModule,
     seo
   ]),
 })

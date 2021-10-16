@@ -29,7 +29,22 @@ export default {
           { title: "Full Width", value: "full" },
         ],
         layout: "radio",
-      }
+      },
+      validation: Rule => Rule.required(),
     },
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'caption',
+      subtitle: 'position',
+      media: 'image',
+    },
+    prepare({ title, subtitle, media}) {
+      return {
+        title,
+        subtitle: `Caption: ${title ? `"${title}"` : 'No caption set'} | Image Layout: ${subtitle}`,
+        media,
+      }
+    }
+  },
 }

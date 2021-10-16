@@ -86,7 +86,8 @@ export default {
           name: 'modules',
           type: 'array',
           of: [
-            { type: 'object', fields: [{ name: 'text', type: 'text' }] },
+            { type: 'textModule' },
+            { type: 'textSectionModule' },
             { type: 'image' },
             { type: 'doubleImage' },
             { type: 'alignedImage' }
