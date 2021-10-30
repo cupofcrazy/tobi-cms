@@ -1,14 +1,27 @@
-import { IoTextSharp } from 'react-icons/io'
-
 export default {
   name: "textModule",
+  title: "Text Block",
   type: "object",
-  title: "Text Module",
-  icon: IoTextSharp,
-  fields: [{ name: "text", type: "text" }],
+  fields: [
+    {
+      name: 'content',
+      type: 'array',
+      of: [
+        {
+          name: 'text',
+          type: 'block',
+          styles: [
+            {title: 'Normal', value: 'normal'},
+            {title: 'Quote', value: 'blockquote'}
+          ],
+
+        }
+      ]
+    }
+  ],
   preview: {
     select: {
-      title: "text"
-    },
+      title: 'content.text'
+    }
   }
-};
+}

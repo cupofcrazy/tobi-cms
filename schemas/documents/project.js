@@ -64,6 +64,14 @@ export default {
           fieldset: 'main'
         },
         {
+          name: 'blockContent',
+          type: 'array',
+          of: [
+            { type: 'block', of: [{ type: 'textModule' }] },
+            { type: 'alignedImage' },
+          ]
+        },
+        {
           name: 'url',
           type: 'url',
           description: 'The url of the project (also for SE0)',
@@ -80,18 +88,6 @@ export default {
           type: 'array',
           description: 'The details of the project',
           of: [{type: 'text'}],
-          fieldset: 'details'
-        },
-        {
-          name: 'modules',
-          type: 'array',
-          of: [
-            { type: 'textModule' },
-            { type: 'textSectionModule' },
-            { type: 'image' },
-            { type: 'doubleImage' },
-            { type: 'alignedImage' }
-          ],
           fieldset: 'details'
         },
         {
