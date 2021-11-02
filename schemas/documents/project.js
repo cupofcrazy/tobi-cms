@@ -64,10 +64,10 @@ export default {
           fieldset: 'main'
         },
         {
-          name: 'blockContent',
+          name: 'modules',
           type: 'array',
           of: [
-            { type: 'block', of: [{ type: 'textModule' }] },
+            { type: 'textModule' },
             { type: 'alignedImage' },
           ]
         },

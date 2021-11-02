@@ -4,24 +4,33 @@ export default {
   type: "object",
   fields: [
     {
-      name: 'content',
-      type: 'array',
-      of: [
-        {
-          name: 'text',
-          type: 'block',
-          styles: [
-            {title: 'Normal', value: 'normal'},
-            {title: 'Quote', value: 'blockquote'}
-          ],
-
-        }
-      ]
+      name: 'titleExists',
+      type: 'boolean',
+      initialValue: false
+    },
+    {
+      name: 'title',
+      type: 'string',
+      description: 'Title of the section',
+      hidden: ({ parent }) => !parent.titleExists
+    },
+    {
+      name: 'body',
+      type: 'text',
+      description: 'Body of the section'
     }
   ],
   preview: {
     select: {
-      title: 'content.text'
+      title: 'title',
+      subtitle: 'body',
+      titleExists: 'titleExists'
+    },
+    prepare({ title, subtitle, titleExists }) {
+      return {
+        title: titleExists ? title : 'No Text Section title added!',
+        subtitle: subtitle
+      }
     }
   }
 }
