@@ -11,6 +11,11 @@ export default {
       name: 'right',
       type: 'image',
     },
+    {
+      name: "caption",
+      type: "text",
+      title: "Text",
+    },
   ],
   preview: {
     select: {

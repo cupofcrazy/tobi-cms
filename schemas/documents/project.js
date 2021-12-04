@@ -26,6 +26,16 @@ export default {
           fieldset: 'main'
         },
         {
+          name: 'theme',
+          type: 'object',
+          description: 'Project Colors',
+          fields: [
+            { name: 'main', title: 'Main Color', type: 'color' },
+            { name: 'accent', title: 'Accent Color', type: 'color' }
+          ],
+          fieldset: 'main'
+        },
+        {
           name: 'subtitle',
           type: 'text',
           description: 'The subtitle of the project',
@@ -69,6 +79,14 @@ export default {
           of: [
             { type: 'textModule' },
             { type: 'alignedImage' },
+            { type: 'doubleImage' },
+            {
+              type: 'object',
+              name: 'videoModule',
+              fields: [
+                { name: 'file', type: 'file' }
+              ]
+            }
           ]
         },
         {
